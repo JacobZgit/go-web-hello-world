@@ -125,4 +125,13 @@ docker push docker.io/zqhdocker/go-web:v1
 ```
 
 ```
-2.
+
+## TroubleShooting:
+### 1.configure gitlab server on ubuntu
+a.Execute the following command to output logs
+```
+gitlab-ctl tails
+```
+b.In this demo, I suggest you set EXTERNAL_URL="http://127.0.0.1"
+
+c.If http://127.0.0.1 return 502, make sure you allocate enough CPU and memory to the virtual machine
