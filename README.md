@@ -112,7 +112,7 @@ docker build . -t go-web:v1
 ```
 docker run -d -it -p 8081:8081  go-web:v1
 ```
-### Task 7: push image to dockerhub
+### Task 7: Push image to dockerhub
 ```
 docker login
 
@@ -120,3 +120,5 @@ docker tag go-web:v1 docker.io/zqhdocker/go-web:v1
 
 docker push docker.io/zqhdocker/go-web:v1
 ```
+### Task：Deploy on K8s Cluster
+1.Create image pull secret for 
