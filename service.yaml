@@ -12,3 +12,5 @@ spec:
       targetPort: 31080
       nodePort: 31080
   type: NodePort
+
+  kubectl create secret docker-registry my-secret --docker-server=DOCKER_REGISTRY_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD
