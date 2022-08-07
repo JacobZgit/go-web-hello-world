@@ -59,8 +59,12 @@ git config --global user.email "<EMAIL>"
 ```
 
 ### Task 4: Build the app and expose ($ go run) the service to 28081 port
-
-1.Create go-web.go in go-web-hello-world
+1.Install golang on ubuntu
+```
+sudo apt install golang-go
+sudo apt install gccgo-go
+```
+2.Create go-web.go in go-web-hello-world
 ```go
 package main
 
