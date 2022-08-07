@@ -1,6 +1,9 @@
 # Go Web Hello World
+#### Even if kubeadm is used to install the single node k8s, I think there is still a lot of work.
 
+#### Since I didn't have a lot of time to implement k8s cluster this weekend, I only completed task 0-7 manually by myself.
 
+#### Since I have an existing Openshift clustert, I directly deploy the image through deployment yaml file and expose the service through nodeport.
 
 ### Task 0: Install a ubuntu 18.04 server 64-bit
 
@@ -123,9 +126,50 @@ docker push docker.io/zqhdocker/go-web:v1
 ### Task：Deploy on K8s Cluster
 1.Create image pull secret for 
 ```
-
+kubectl create secret docker-registry go-web-secret --docker-server=docker.io/zqhdocker --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD
 ```
-
+2.Deploy deployment and service yaml file
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web
+  namespace: iaf
+spec:
+  selector:
+    matchLabels:
+      app: go-web
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: go-web
+    spec:
+      containers:
+        - name: go-web
+          image: >-
+            docker.io/zqhdocker/go-web:v1
+          imagePullSecrets:
+            - name: go-web-secret
+          ports:
+            - containerPort: 31080
+```
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-web-service
+spec:
+  selector:
+      app: go-web
+  ports:
+    - name: http
+      port: 31080
+      protocol: TCP
+      targetPort: 31080
+      nodePort: 31080
+  type: NodePort
+```
 ## TroubleShooting:
 ### 1.configure gitlab server on ubuntu
 a.Execute the following command to output logs

@@ -20,4 +20,4 @@ spec:
           imagePullSecrets:
             - name: go-web-secret
           ports:
-            - containerPort: 31080
+            - containerPort: 8081

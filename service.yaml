@@ -6,11 +6,7 @@ spec:
   selector:
       app: go-web
   ports:
-    - name: http
-      port: 31080
-      protocol: TCP
-      targetPort: 31080
+    - port: 80
+      targetPort: 8081
       nodePort: 31080
   type: NodePort
-
-  kubectl create secret docker-registry my-secret --docker-server=DOCKER_REGISTRY_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD
