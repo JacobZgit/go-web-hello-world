@@ -122,3 +122,7 @@ docker push docker.io/zqhdocker/go-web:v1
 ```
 ### Task：Deploy on K8s Cluster
 1.Create image pull secret for 
+```
+
+```
+2.
